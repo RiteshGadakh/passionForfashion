@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-const url = 'mongodb+srv://riteshgadakh04:Zyw1b1Fp5Qz3J10k@passionforfashion.cikcd64.mongodb.net/?retryWrites=true&w=majority&appName=passionforfashion';
+const url = 'mongodb+srv://riteshgadakh04:Zyw1b1Fp5Qz3J10k@passionforfashion.cikcd64.mongodb.net/';
 const dbName = 'Ecom';
 let client = null;
 async function MDBconnect(){
