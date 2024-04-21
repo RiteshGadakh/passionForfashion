@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - passionforfashion</title>
+    <link rel="icon" href="img/logo2.png" type="icon">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section id="header">
+        <a href="#"><img src="./img/1.png" class="logo" alt="logo"></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a  href="index.html">Home</a></li>
+                <li><a href="./shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                <li><button class="normal1"><a href="./login.html" id="loginbtn">Login</a></button></li>
+                <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+
+        <!-- media quary
+        <div id="mobile">
+            <i id="bar" class="fas fa-outdent"></i>
+            <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div> -->
+
+        <nav id="hamburger-nav">
+            <!-- <div class="logo">passionForfashion</div> -->
+            <div class="hamburger-menu">
+                <div class="hamburger-icon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-links">
+                    <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+                    <li><a href="shop.html" onclick="toggleMenu()">Shop</a></li>
+                    <li><a href="about.html" onclick="toggleMenu()">About</a></li>
+                    <li><a href="contact.html" onclick="toggleMenu()">Contact</a></li>
+                    <li><a href="login.html" onclick="toggleMenu()">Login</a></li>
+                      <li><a href="cart.html" onclick="toggleMenu()">Cart</a></li>
+                </div>
+            </div>
+        </nav>
+        <script>
+            function toggleMenu() {
+                const menu = document.querySelector(".menu-links");
+                const icon = document.querySelector(".hamburger-icon");
+                menu.classList.toggle("open");
+                icon.classList.toggle("open");
+            }
+
+        </script>
+    </section>
+
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-image">
+            <!-- Dynamically set main image from URL query -->
+            <img src="" width="100%" id="MainImg" alt="">
+
+        </div>
+
+        <div class="single-pro-details">
+            <h6>Home / T-Shirt</h6>
+            <!-- Set dynamic title and price from URL query -->
+            <h4 id="title">Loading...</h4>
+            <h2 id="price">Loading...</h2>
+            <!-- Add size selector -->
+            <select id="size">
+                <option>Select Size</option>
+                <option>XL</option>
+                <option>XXL</option>
+                <option>Small</option>
+                <option>Large</option>
+            </select>
+            <!-- Set default quantity -->
+            <input type="number" value="1" id="quantity">
+            <!-- Add to cart button with onclick event -->
+            <button class="normal" onclick="cart()">Add to Cart</button>
+            <!-- <h4>Product Details</h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi omnis ut incidunt perspiciatis
+                ducimus nisi totam expedita quidem, nemo aspernatur?</span> -->
+        </div>
+    </section>
+
+    <section id="reviews" class="section-reviews">
+        <h3 class="reviews-heading">Customer Reviews</h3>
+        <div id="existing-reviews" class="existing-reviews">
+            <!-- Existing reviews will be displayed here -->
+        </div>
+        <h4 class="add-review-heading">Add Your Review</h4>
+        <div>
+            <select id="rating" class="review-rating">
+                <option value="1">1 - Poor</option>
+                <option value="2">2 - Fair</option>
+                <option value="3">3 - Average</option>
+                <option value="4">4 - Good</option>
+                <option value="5">5 - Excellent</option>
+            </select>
+        </div>
+        <div>
+            <textarea id="review-text" class="review-text" rows="4" placeholder="Write your review here"></textarea>
+        </div>
+        <button onclick="submitReview()" class="submit-review-btn">Submit Review</button>
+    </section>
+
+
+
+    <!-- JavaScript code -->
+    <script>
+        var MainImg = document.getElementById("MainImg");
+        var smallimg = document.getElementsByClassName("small-img");
+
+        // Function to extract URL parameters
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Extract title, price, and image from URL query
+        var title = getParameterByName('name');
+        var price = getParameterByName('price');
+        var image = getParameterByName('img');
+
+        // Set dynamic title, price, and image
+        document.getElementById("title").innerText = title;
+        document.getElementById("price").innerText = price;
+        MainImg.src = image;
+
+        // Add event listeners to small images to change main image on click
+        smallimg[0].onclick = function () {
+            MainImg.src = smallimg[0].src;
+        }
+        smallimg[1].onclick = function () {
+            MainImg.src = smallimg[1].src;
+        }
+        smallimg[2].onclick = function () {
+            MainImg.src = smallimg[2].src;
+        }
+        smallimg[3].onclick = function () {
+            MainImg.src = smallimg[3].src;
+        }
+
+        // Function to add product to cart
+        function cart() {
+            if (!localStorage.getItem('mail')) {
+                alert('Please login first');
+                return;
+            }
+            var size = document.getElementById("size").value;
+            var title = document.getElementById("title").innerText;
+            var price = document.getElementById("price").innerText;
+            var image = document.getElementById("MainImg").src;
+            var email = localStorage.getItem("mail");
+
+            const formData = {
+                title: title,
+                price: price,
+                size: size,
+                image: image,
+                email: email
+            };
+
+            fetch('/cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Cart Updated successfully");
+                        window.location.href = "/shop.html";
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during adding to cart:', error);
+                });
+        }
+        function submitReview() {
+            if (!localStorage.getItem('user')) {
+                alert('Please Login First');
+                window.location.href = '/login.html';
+                return;
+            }
+            var title = document.getElementById('title').innerText;
+            console.log(title);
+            var reviewText = document.querySelector(".review-text").value;
+            var rating = document.querySelector(".review-rating").value;
+            var name = localStorage.getItem("user");
+
+
+            var reviewData = {
+                text: reviewText,
+                rating: rating,
+                title: title,
+                name: name
+            };
+
+            fetch('/reviews', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(reviewData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Review submitted: " + reviewText + ", Rating: " + rating);
+                        document.getElementById('rating').selectedIndex = 4;
+                        document.getElementById('review-text').value = '';
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('Error updating review:', error);
+                });
+        }
+
+        // Function to fetch reviews from the backend
+        function fetchReviews(productTitle) {
+            const requestBody = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title: productTitle })
+            };
+
+            // Replace 'backend_url' with the actual URL of your backend endpoint that serves reviews
+            fetch('./getreviews', requestBody)
+                .then(response => response.json())
+                .then(reviews => {
+                    // Call function to display reviews
+                    console.log(reviews);
+                    console.log(reviews.data);
+                    if(reviews.success && reviews.data.length>0) {
+                        displayReviews(reviews.data);
+                    }else{
+                        document.getElementById('existing-reviews').innerText="No Reviews Available be first to review this product"
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching reviews:', error);
+                });
+        }
+
+        // Function to display reviews in the specified div
+        function displayReviews(reviews) {
+            const reviewsContainer = document.getElementById('existing-reviews');
+            reviewsContainer.innerHTML = '';
+            reviews.forEach(review => {
+                const reviewElement = document.createElement('div');
+                reviewElement.classList.add('review');
+
+                reviewElement.innerHTML = `
+                <br/>
+            <div class="reviewer">${review.name}</div>
+            <div class="rating">
+                ${getRatingImage(Number(review.rating))}
+            </div>
+            <div class="text">${review.text}</div>
+            <br/>
+            <hr/>
+        `;
+                reviewsContainer.appendChild(reviewElement);
+            });
+        }
+
+        // Function to get the image corresponding to the rating
+        function getRatingImage(rating) {
+            let ratingImage = '';
+            switch (rating) {
+                case 1:
+                    ratingImage = './img/ratings/poor.png'; // Replace with your image path for poor rating
+                    break;
+                case 2:
+                    ratingImage = './img/ratings/fair.png'; // Replace with your image path for fair rating
+                    break;
+                case 3:
+                    ratingImage = './img/ratings/average.png'; // Replace with your image path for average rating
+                    break;
+                case 4:
+                    ratingImage = './img/ratings/good.png'; // Replace with your image path for good rating
+                    break;
+                case 5:
+                    ratingImage = './img/ratings/excellent.png'; // Replace with your image path for excellent rating
+                    break;
+                default:
+                    ratingImage = ''; // Default if rating is out of range
+            }
+            if (ratingImage) {
+                return `<img src="${ratingImage}" alt="${rating} star rating" id='ratingimg'>`;
+            } else {
+                return 'Rating not available';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const productTitle = document.getElementById('title').innerText
+            window.onload = fetchReviews(productTitle);
+        });
+    </script>
+
+</body>
+
+</html>

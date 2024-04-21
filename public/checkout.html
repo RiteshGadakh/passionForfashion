@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <link rel="icon" href="img/logo2.png" type="icon">
+</head>
+
+<body>
+    <section id="header">
+        <a href="#"><img src="./img/1.png" class="logo" alt="logo"></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="./shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                <li><button class="normal1"><a href="./login.html" id="loginbtn">Login</a></button></li>
+                <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+
+        <!-- media quary
+        <div id="mobile">
+            <i id="bar" class="fas fa-outdent"></i>
+            <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div> -->
+
+        <nav id="hamburger-nav">
+            <!-- <div class="logo">passionForfashion</div> -->
+            <div class="hamburger-menu">
+                <div class="hamburger-icon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-links">
+                    <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+                    <li><a href="shop.html" onclick="toggleMenu()">Shop</a></li>
+                    <li><a href="about.html" onclick="toggleMenu()">About</a></li>
+                    <li><a href="contact.html" onclick="toggleMenu()">Contact</a></li>
+                    <li><a href="login.html" onclick="toggleMenu()">Login</a></li>
+                    <li><a href="cart.html" onclick="toggleMenu()">Cart</a></li>
+                </div>
+            </div>
+        </nav>
+        <script>
+            function toggleMenu() {
+                const menu = document.querySelector(".menu-links");
+                const icon = document.querySelector(".hamburger-icon");
+                menu.classList.toggle("open");
+                icon.classList.toggle("open");
+            }
+
+        </script>
+    </section>
+
+    <div class="checkout-container">
+        <div class="checkout-form">
+            <h2>Shipping Information</h2>
+            <form id="checkout-form" action="#" method="post">
+
+                <label for="checkout-address">Address:</label>
+                <textarea id="checkout-address" name="address" required></textarea>
+
+                <label for="checkout-city">City:</label>
+                <input type="text" id="checkout-city" name="city" required>
+
+                <label for="checkout-zip">ZIP Code:</label>
+                <input type="text" id="checkout-zip" name="zip" required>
+
+                <label for="checkout-country">Country:</label>
+                <input type="text" id="checkout-country" name="country" required>
+
+                <!-- Hidden input field to store the total amount -->
+                <input type="hidden" id="total-amount" name="total_amount">
+
+                <!-- Hidden input field for payment method -->
+                <input type="hidden" id="payment-method" name="payment_method" value="cash-on-delivery">
+
+                <!-- Proceed to Checkout button -->
+                <button type="submit" class="checkout-proceed-to-checkout">Proceed to Checkout</button>
+            </form>
+        </div>
+
+        <div class="checkout-total">
+            <h2>Total Amount</h2>
+            <!-- Display the total amount -->
+            <div class="checkout-total-details">
+                <p>Subtotal:</p>
+                <p>₹XXXX.XX</p>
+            </div>
+            <div class="checkout-gst-details">
+                <p>GST (12%):</p>
+                <p>₹XXX.XX</p>
+            </div>
+            <hr>
+            <div class="checkout-total-amount">
+                <p>Total:</p>
+                <p>₹XXXX.XX</p>
+            </div>
+            <hr>
+            <div class="checkout-payment-method">
+                <h3>Payment Method</h3>
+                <label for="checkout-cash-on-delivery">
+                    <input type="radio" id="checkout-cash-on-delivery" name="payment" value="cash-on-delivery" checked>
+                    Cash on Delivery
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Add footer content here -->
+    </footer>
+</body>
+<script>
+    // Function to retrieve query parameters from URL
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Function to update total amount
+    function updateTotalAmount() {
+        var totalAmount = getParameterByName('total');
+        if (totalAmount) {
+            document.querySelector('.checkout-total-details p:last-of-type').textContent = '₹' + totalAmount;
+            // Calculate GST (12%)
+            var gstAmount = (parseFloat(totalAmount) * 0.12).toFixed(2);
+            document.querySelector('.checkout-gst-details p:last-of-type').textContent = '₹' + gstAmount;
+            // Calculate total including GST
+            var totalIncludingGST = (parseFloat(totalAmount) + parseFloat(gstAmount)).toFixed(2);
+            document.querySelector('.checkout-total-amount p:last-of-type').textContent = '₹' + totalIncludingGST;
+
+            // Set total amount to hidden input field
+            document.getElementById('total-amount').value = totalAmount;
+        }
+    }
+
+
+    function submitForm(event) {
+        event.preventDefault();
+
+        var formData = {
+            name: localStorage.getItem('user'),
+            email: localStorage.getItem('mail'),
+            address: document.getElementById('checkout-address').value,
+            city: document.getElementById('checkout-city').value,
+            zip: document.getElementById('checkout-zip').value,
+            country: document.getElementById('checkout-country').value,
+            total_amount: document.getElementById('total-amount').value,
+            payment_method: document.getElementById('payment-method').value,
+            products: localStorage.getItem('cart')
+        };
+
+        fetch('/GetOrder', {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                console.log(response);
+                return response.json(); // Add return statement to handle the parsed JSON data
+            }).then(result => {
+                console.log(result);
+                if (result.success) {
+                    localStorage.removeItem('cart');
+                    alert('Order Placed Successfully');
+                    window.location.href = './';
+                } else {
+                    alert(result.message);
+                }
+            }).catch(error => {
+                alert('Error: ' + error.message);
+                console.error('Error:', error);
+            });
+
+    }
+
+    window.onload = function () {
+        updateTotalAmount();
+        document.getElementById('checkout-form').addEventListener('submit', () => { submitForm(event) });
+    };
+
+
+    localStorage.removeItem('cart');
+    if (localStorage.getItem('mail')) {
+        document.getElementById('loginbtn').innerText = 'Logout';
+    }
+
+</script>
+
+</html>

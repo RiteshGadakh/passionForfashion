@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>passionforfashion|cart</title>
+    <link rel="icon" href="img/logo2.png" type="icon">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section id="header">
+        <a href="#"><img src="./img/1.png" class="logo" alt="logo"></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="./shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                <li><button class="normal1"><a href="./login.html" id="loginbtn">Login</a></button></li>
+                <li id="lg-bag"><a class="active" href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+
+        <!-- media quary
+        <div id="mobile">
+            <i id="bar" class="fas fa-outdent"></i>
+            <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div> -->
+
+        <nav id="hamburger-nav">
+            <!-- <div class="logo">passionForfashion</div> -->
+            <div class="hamburger-menu">
+                <div class="hamburger-icon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-links">
+                    <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+                    <li><a href="shop.html" onclick="toggleMenu()">Shop</a></li>
+                    <li><a href="about.html" onclick="toggleMenu()">About</a></li>
+                    <li><a href="contact.html" onclick="toggleMenu()">Contact</a></li>
+                    <li><a href="login.html" onclick="toggleMenu()">Login</a></li>
+                      <li><a href="cart.html" onclick="toggleMenu()">Cart</a></li>
+                </div>
+            </div>
+        </nav>
+        <script>
+            function toggleMenu() {
+                const menu = document.querySelector(".menu-links");
+                const icon = document.querySelector(".hamburger-icon");
+                menu.classList.toggle("open");
+                icon.classList.toggle("open");
+            }
+
+        </script>
+    </section>
+
+    <section id="cart" class="section-p1">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Size</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </section>
+
+    <section id="cart-add" class="section-p1">
+        <!-- <div id="coupon">
+            <h3>Apply Coupon</h3>
+            <div>
+                <input type="text" placeholder="Enter Coupon Code">
+                <button class="normal">Apply</button>
+            </div>
+        </div> -->
+
+        <div id="subtotal">
+            <h3>Cart Totals</h3>
+            <table>
+                <tr>
+                    <td>Cart Subtotal</td>
+                    <td id="cart-subtotal">₹ 0.00</td>
+                </tr>
+
+                <tr>
+                    <td>Shipping</td>
+                    <td>Free</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong id="total">₹ 0.00</strong></td>
+                </tr>
+            </table>
+            <button class="normal" onclick="checkout()">Proceed to checkout</button>
+        </div>
+    </section>
+
+    <section id="newsletters" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For passionForfashion</h4>
+            <p>Get E-mail update about our latest shop and <span>Special Offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Enter your email address">
+            <a href="login/login.html"></a><button class="normal">Sign Up</button></div>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="img/logo.png" alt="">
+            <h4>Contact</h4>
+            <p><strong> Address : </strong> Deopur , Sinnar , Nashik </p>
+            <p><strong> Mobile Number : </strong> +91-7030420411 </p>
+
+            <div class="follow">
+                <h4>follow Us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook" style="color: blue" ;></i>
+                    <i class="fab fa-instagram" style="color: rgb(195, 0, 255)" ;></i>
+                    <i class="fab fa-linkedin" style="color: blue" ;></i>
+                    <i class="fab fa-github" style="color: black;"></i>
+                    <i class="fab fa-google" style="color: red" ;></i>
+                    <i class="fab fa-twitter" style="color: blue" ;></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign in</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or google Play</p>
+            <div class="row">
+                <img src="img/pay/app.jpg" alt="">
+                <img src="img/pay/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="img/pay/pay.png" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>Copyright &#169; 2024 Ritesh Gadakh. All right received.&#9829;</p>
+        </div>
+    </footer>
+    <script>
+        var totalAmount;
+        const userEmail = localStorage.getItem("mail");
+
+        fetch(`/fetchcart?email=${userEmail}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    let resultArray = result.data;
+                    let tbody = document.getElementById('tbody');
+                    const email = localStorage.getItem("mail");
+                    resultArray.forEach(data => {
+                        let tr = document.createElement('tr');
+                        tr.innerHTML = `
+                        <td><a href="./deleteItem?email=${email}&title=${data.title}&size=${data.size}"><i class="far fa-times-circle"></i></a></td>
+                        <td><img src="${data.image}" alt=""></td>
+                        <td>${data.title}</td>
+                        <td>${data.price}</td>
+                        <td>${data.size}</td>
+                        <td><input type="number" class="quantity-input" value="1"></input></td>
+                        <td class="total">${data.price}</td>`; // Display initial total based on default quantity
+
+                        const price = parseFloat(data.price.replace('₹', ''));
+                        // Add event listener to input field to calculate total dynamically
+                        tr.querySelector('.quantity-input').addEventListener('input', function () {
+                            const quantity = parseInt(this.value); // Parse input value to integer
+                            const total = price * quantity; // Calculate total
+                            tr.querySelector('.total').textContent = "₹" + total.toFixed(2); // Update total in table cell
+                            updateSubtotal(); // Update subtotal whenever quantity changes
+                        });
+                        tbody.appendChild(tr);
+                    });
+                    updateSubtotal(); // Update subtotal initially
+                } else {
+                    alert(result.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching cart contents:', error);
+            });
+
+        function updateSubtotal() {
+            const totalCells = document.querySelectorAll('.total');
+            let subtotal = 0;
+            totalCells.forEach(cell => {
+                const cellContent = cell.textContent.replace('₹', '');
+                subtotal += parseFloat(cellContent);
+            });
+            document.getElementById('cart-subtotal').textContent = '₹' + subtotal.toFixed(2);
+            document.getElementById('total').textContent = '₹' + subtotal.toFixed(2);
+            totalAmount = subtotal.toFixed(2);
+        }
+
+        function checkout() {
+            savecart();
+            window.location.href = './checkout.html?total=' + totalAmount;
+        }
+
+        function savecart() {
+            let tableData = [];
+            const rows = document.querySelectorAll('#tbody tr');
+            rows.forEach(row => {
+                const title = row.querySelector('td:nth-child(3)').textContent;
+                const image = row.querySelector('td:nth-child(2) img').getAttribute('src');
+                const price = row.querySelector('td:nth-child(4)').textContent;
+                const size = row.querySelector('td:nth-child(5)').textContent;
+                const quantity = parseInt(row.querySelector('.quantity-input').value);
+                tableData.push({ title, image, price, size, quantity });
+            });
+            localStorage.setItem('cart', JSON.stringify(tableData));
+        }
+
+
+
+            localStorage.removeItem('cart');
+            if (localStorage.getItem('mail')) {
+                document.getElementById('loginbtn').innerText = 'Logout';
+            }
+
+    </script>
+
+</body>
+
+</html>

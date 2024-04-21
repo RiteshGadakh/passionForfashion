@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>passionforfashion|contact</title>
+    <link rel="icon" href="img/logo2.png" type="icon">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="style.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init({
+                publicKey: "QNWwcUML3mVRC86vW",
+            });
+        })();
+    </script>
+</head>
+
+<body>
+    <section id="header">
+        <a href="#"><img src="./img/1.png" class="logo" alt="logo"></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="./shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a class="active" href="contact.html">Contact us</a></li>
+                <li><button class="normal1"><a href="./login.html" id="loginbtn">Login</a></button></li>
+                <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+
+        <!-- media quary
+            <div id="mobile">
+                <i id="bar" class="fas fa-outdent"></i>
+                <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+                <i id="bar" class="fas fa-outdent"></i>
+            </div> -->
+
+        <nav id="hamburger-nav">
+            <!-- <div class="logo">passionForfashion</div> -->
+            <div class="hamburger-menu">
+                <div class="hamburger-icon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-links">
+                    <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+                    <li><a href="shop.html" onclick="toggleMenu()">Shop</a></li>
+                    <li><a href="about.html" onclick="toggleMenu()">About</a></li>
+                    <li><a href="contact.html" onclick="toggleMenu()">Contact</a></li>
+                    <li><a href="login.html" onclick="toggleMenu()">Login</a></li>
+                    <li><a href="cart.html" onclick="toggleMenu()">Cart</a></li>
+                </div>
+            </div>
+        </nav>
+        <script>
+            function toggleMenu() {
+                const menu = document.querySelector(".menu-links");
+                const icon = document.querySelector(".hamburger-icon");
+                menu.classList.toggle("open");
+                icon.classList.toggle("open");
+            }
+
+        </script>
+    </section>
+
+    <section id="page-header" class="about-header">
+        <h2>#let's_talk</h2>
+        <p>LEAVE A MESSAGE, We love to hear from you!</p>
+    </section>
+
+    <section id="contact-details" class="section-p1">
+        <div class="details">
+            <span>GET IN TOUCH</span>
+            <h2>Visit one of our agency locations or contact us today</h2>
+            <h3>Head Office</h3>
+
+            <div>
+                <li>
+                    <i class="fal fa-map"></i>
+                    <p>At.post Deopur, Sinnar, Nashik, 422103</p>
+                </li>
+                <li>
+                    <i class="fal fa-envelope"></i>
+                    <p>passionforfashion@gmail.com</p>
+                </li>
+                <li>
+                    <i class="fal fa-phone-alt"></i>
+                    <p>7030420411</p>
+                </li>
+                <li>
+                    <i class="fal fa-clock"></i>
+                    <p>Monday to Saturday : 09:00am to 16:00pm</p>
+                </li>
+            </div>
+        </div>
+
+        <div class="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3752.354671506098!2d74.15036291080443!3d19.867240181430034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddb3beab8bbacb%3A0x1acf64f6e75d013f!2sDeopur%20Sinnar!5e0!3m2!1sen!2sin!4v1710503401445!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <section id="form-details">
+        <form>
+            <span>LEAVE A MESSAGE</span>
+            <h2>We love to hear from you</h2>
+            <input type="text" id="fullName" placeholder="Your Name" required>
+            <input type="text" id="email_id" placeholder="E-mail id" required>
+            <!-- <input type="number" placeholder="Mob_Number" required> -->
+            <textarea id="message" cols="30" rows="10" placeholder="Message" required></textarea>
+            <button onclick="SendMail();" class="normal">Submit</button>
+        </form>
+
+        <div class="people">
+            <div>
+                <img src="img/people/1.png" alt="">
+                <p><span>Ritesh Gadakh | </span>Web Devloper <br> Phone: +91 7030420411
+                    <br>Email:riteshgadakh24@gmail.com
+                </p>
+            </div>
+
+    </section>
+    <section id="newsletters" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For passionForfashion</h4>
+            <p>Get E-mail update about our latest shop and <span>Special Offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Enter your email address">
+            <a href="login/login.html"></a><button class="normal">Sign Up</button>
+        </div>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="img/logo.png" alt="">
+            <h4>Contact</h4>
+            <p><strong> Address : </strong> Deopur , Sinnar , Nashik </p>
+            <p><strong> Mobile Number : </strong> +91-7030420411 </p>
+
+            <div class="follow">
+                <h4>follow Us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook" style="color: blue" ;></i>
+                    <i class="fab fa-instagram" style="color: rgb(195, 0, 255)" ;></i>
+                    <i class="fab fa-linkedin" style="color: blue" ;></i>
+                    <i class="fab fa-github" style="color: black;"></i>
+                    <i class="fab fa-google" style="color: red" ;></i>
+                    <i class="fab fa-twitter" style="color: blue" ;></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign in</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or google Play</p>
+            <div class="row">
+                <img src="img/pay/app.jpg" alt="">
+                <img src="img/pay/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="img/pay/pay.png" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>Copyright &#169; 2024 Ritesh Gadakh. All right received.&#9829;</p>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript">
+
+        function SendMail() {
+            var params = {
+                from_name : document.getElementById("fullName").value,
+                email_id : document.getElementById("email_id").value,
+                message : document.getElementById("message").value
+            }
+            emailjs.send("service_61k5c4f", "template_30c2sc5", params).then(function(res) {
+                // alert("Success!" + res.status);
+                console.log('SUCCESS!');
+                alert('Email sent successfully');
+            })
+        }
+
+            localStorage.removeItem('cart');
+            if (localStorage.getItem('mail')) {
+                document.getElementById('loginbtn').innerText = 'Logout';
+            }
+      
+
+    </script>
+
+
+</body>
+
+</html>
