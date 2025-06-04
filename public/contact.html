@@ -208,7 +208,7 @@
                 message : document.getElementById("message").value
             }
             emailjs.send("service_cbl1aqk", "template_0jo8zgh", params).then(function(res) {
-                // alert("Success!" + res.status);
+                alert("Success!" + res.status);
                 console.log('SUCCESS!');
                 alert('Email sent successfully');
             })
